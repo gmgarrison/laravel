@@ -1,0 +1,49 @@
+<?php
+
+namespace {{ namespace }};
+
+use Closure;
+use Illuminate\View\Component;
+use Illuminate\Contracts\View\View;
+use Sentry;
+
+class {{ class }} extends Component
+{
+    public bool $error = false;
+
+    public string $errorMessage = '';
+
+     public function shouldRender(): bool
+     {
+         return true;
+     }
+
+    public function __construct()
+    {
+        try {
+
+        } catch (\Exception $e) {
+            Sentry::captureException($e);
+            $this->error = true;
+            $this->errorMessage = $e->getMessage();
+        }
+    }
+
+    public function render(): View|Closure|string
+    {
+        if ($this->error) {
+            return view('components.error', [
+                'message' => $this->errorMessage,
+            ]);
+        }
+
+        try {
+            return {{ view }};
+        } catch (\Exception $e) {
+            Sentry::captureException($e);
+            return view('components.error', [
+                'message' => $e->getMessage(),
+            ]);
+        }
+    }
+}

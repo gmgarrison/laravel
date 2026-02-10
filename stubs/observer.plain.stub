@@ -1,0 +1,35 @@
+<?php
+
+namespace {{ namespace }};
+
+/*
+    - Retrieved: Triggered after a record is retrieved from the database.
+    - Creating: Fires just before a new record is created.
+    - Created: Executes after a new record is created successfully.
+    - Updating: Activates before an existing record is updated.
+    - Updated: Fires after a record has been updated.
+    - Saving: Runs before a record is saved, whether it's a new creation or an update.
+    - Saved: Occurs after a record has been saved, whether newly created or updated.
+    - Deleting: Initiates before a record is deleted or soft-deleted.
+    - Deleted: Activates after a record is deleted or soft-deleted.
+    - Restoring: Fires before a soft-deleted record is restored.
+    - Restored: Runs after a soft-deleted record has been successfully restored.
+ */
+
+class {{ class }}
+{
+        public function created($record): void
+        {
+
+        }
+
+        public function updated($record): void
+        {
+
+        }
+
+        public function deleted($record): void
+        {
+
+        }
+}
