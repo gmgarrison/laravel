@@ -24,4 +24,6 @@ Route::middleware('guest')->group(function () {
     Route::get('auth/google/callback', [GoogleController::class, 'callback'])->name('auth.google.callback');
 });
 
+Route::mediaLibrary();
+
 require __DIR__.'/settings.php';

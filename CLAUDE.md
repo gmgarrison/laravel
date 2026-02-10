@@ -21,6 +21,7 @@ This application is a Laravel application and its main Laravel ecosystems packag
 - livewire/livewire (LIVEWIRE) - v4
 - larastan/larastan (LARASTAN) - v3
 - laravel/mcp (MCP) - v0
+- laravel/pint (PINT) - v1
 - laravel/sail (SAIL) - v1
 - pestphp/pest (PEST) - v4
 - phpunit/phpunit (PHPUNIT) - v12
@@ -248,6 +249,13 @@ protected function isAccessible(User $user, ?string $path = null): bool
 - Instead of writing frontend code in JavaScript frameworks, you use Alpine.js to build the UI when client-side interactions are required.
 - State lives on the server; the UI reflects it. Validate and authorize in actions (they're like HTTP requests).
 - IMPORTANT: Activate `livewire-development` every time you're working with Livewire-related tasks.
+
+=== pint/core rules ===
+
+# Laravel Pint Code Formatter
+
+- You must run `vendor/bin/pint --dirty --format agent` before finalizing changes to ensure your code matches the project's expected style.
+- Do not run `vendor/bin/pint --test --format agent`, simply run `vendor/bin/pint --format agent` to fix any formatting issues.
 
 === pest/core rules ===
 
