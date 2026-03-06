@@ -27,7 +27,10 @@
       "mcp__laravel-boost__list-available-env-vars",
       "mcp__laravel-boost__list-routes",
       "mcp__laravel-boost__search-docs",
-      "mcp__laravel-boost__tinker"
+      "mcp__laravel-boost__tinker",
+      "Bash(composer require:*)",
+      "Bash(echo:*)",
+      "Bash(art:*)"
     ]
   },
   "enableAllProjectMcpServers": true,

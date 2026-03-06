@@ -11,7 +11,6 @@ new class extends Component {
 
     public string $current_password = '';
     public string $password = '';
-    public string $password_confirmation = '';
 
     /**
      * Update the password for the currently authenticated user.
@@ -24,7 +23,7 @@ new class extends Component {
                 'password' => $this->passwordRules(),
             ]);
         } catch (ValidationException $e) {
-            $this->reset('current_password', 'password', 'password_confirmation');
+            $this->reset('current_password', 'password');
 
             throw $e;
         }
@@ -33,7 +32,7 @@ new class extends Component {
             'password' => $validated['password'],
         ]);
 
-        $this->reset('current_password', 'password', 'password_confirmation');
+        $this->reset('current_password', 'password');
 
         $this->dispatch('password-updated');
     }
@@ -56,13 +55,6 @@ new class extends Component {
             <flux:input
                 wire:model="password"
                 :label="__('New password')"
-                type="password"
-                required
-                autocomplete="new-password"
-            />
-            <flux:input
-                wire:model="password_confirmation"
-                :label="__('Confirm Password')"
                 type="password"
                 required
                 autocomplete="new-password"

@@ -5,8 +5,12 @@
     "guidelines": true,
     "herd_mcp": true,
     "mcp": true,
+    "nightwatch_mcp": false,
     "packages": [
-        "laravel/fortify"
+        "laravel/fortify",
+        "filament/filament",
+        "filament/blueprint",
+        "laravel/ai"
     ],
     "sail": false,
     "skills": [
@@ -15,6 +19,7 @@
         "livewire-development",
         "pest-testing",
         "tailwindcss-development",
+        "ai-sdk-development",
         "developing-with-fortify"
     ]
 }

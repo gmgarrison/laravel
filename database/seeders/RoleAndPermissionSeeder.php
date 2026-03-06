@@ -36,5 +36,20 @@ class RoleAndPermissionSeeder extends Seeder
 
         $admin = Role::firstOrCreate(['name' => 'admin', 'guard_name' => 'web']);
         $admin->syncPermissions($permissions);
+
+        $editor = Role::firstOrCreate(['name' => 'editor', 'guard_name' => 'web']);
+        $editor->syncPermissions([
+            'view_users',
+            'edit_users',
+            'view_roles',
+            'view_permissions',
+        ]);
+
+        $viewer = Role::firstOrCreate(['name' => 'viewer', 'guard_name' => 'web']);
+        $viewer->syncPermissions([
+            'view_users',
+            'view_roles',
+            'view_permissions',
+        ]);
     }
 }

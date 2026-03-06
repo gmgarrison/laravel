@@ -7,6 +7,14 @@ use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Validation\Rules\Password;
+use Laravel\Horizon\Horizon;
+use Spatie\Health\Checks\Checks\CacheCheck;
+use Spatie\Health\Checks\Checks\DatabaseCheck;
+use Spatie\Health\Checks\Checks\DebugModeCheck;
+use Spatie\Health\Checks\Checks\OptimizedAppCheck;
+use Spatie\Health\Checks\Checks\ScheduleCheck;
+use Spatie\Health\Checks\Checks\UsedDiskSpaceCheck;
+use Spatie\Health\Facades\Health;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -24,6 +32,8 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         $this->configureDefaults();
+        $this->configureHorizon();
+        $this->configureHealthChecks();
     }
 
     /**
@@ -46,5 +56,30 @@ class AppServiceProvider extends ServiceProvider
                 ->uncompromised()
             : null
         );
+    }
+
+    /**
+     * Configure Horizon dashboard authorization.
+     */
+    protected function configureHorizon(): void
+    {
+        Horizon::auth(function ($request): bool {
+            return $request->user()?->hasRole('admin') ?? false;
+        });
+    }
+
+    /**
+     * Register Spatie Health checks for application monitoring.
+     */
+    protected function configureHealthChecks(): void
+    {
+        Health::checks([
+            DatabaseCheck::new(),
+            CacheCheck::new(),
+            UsedDiskSpaceCheck::new()->warnWhenUsedSpaceIsAbovePercentage(80)->failWhenUsedSpaceIsAbovePercentage(90),
+            ScheduleCheck::new(),
+            OptimizedAppCheck::new(),
+            DebugModeCheck::new(),
+        ]);
     }
 }
