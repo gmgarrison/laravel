@@ -7,19 +7,28 @@
     "mcp": true,
     "nightwatch_mcp": false,
     "packages": [
-        "laravel/fortify",
         "filament/filament",
-        "filament/blueprint",
-        "laravel/ai"
+        "filament/blueprint"
     ],
     "sail": false,
     "skills": [
+        "ai-sdk-development",
+        "cashier-stripe-development",
+        "fortify-development",
+        "laravel-best-practices",
+        "configuring-horizon",
         "pennant-development",
+        "pulse-development",
+        "socialite-development",
         "fluxui-development",
         "livewire-development",
         "pest-testing",
         "tailwindcss-development",
-        "ai-sdk-development",
-        "developing-with-fortify"
+        "echo-development",
+        "laravel-patterns",
+        "laravel-security",
+        "laravel-specialist",
+        "php-best-practices",
+        "php-pro"
     ]
 }

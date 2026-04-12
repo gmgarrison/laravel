@@ -60,7 +60,7 @@ new #[Layout('layouts::auth')] class extends Component {
         </div>
     </form>
 
-    <!-- Divider -->
+    {{-- <!-- Divider -->
     <div class="relative flex items-center justify-center">
         <div class="absolute inset-0 flex items-center">
             <div class="w-full border-t border-zinc-200 dark:border-zinc-700"></div>
@@ -82,7 +82,7 @@ new #[Layout('layouts::auth')] class extends Component {
         </x-slot:iconLeading>
 
         {{ __('Google') }}
-    </flux:button>
+    </flux:button> --}}
 
     <div class="space-x-1 text-sm text-center rtl:space-x-reverse text-zinc-600 dark:text-zinc-400">
         <span>{{ __('Already have an account?') }}</span>
